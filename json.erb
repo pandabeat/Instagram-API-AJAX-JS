@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+    <head>
+        <title>ajax example</title>
+        <script type='text/javascript' src='http://code.jquery.com/jquery-1.11.1.min.js'></script>
+        <script>
+            $(document).ready(function(){
+                $('#fetch-link').click(function(event){
+                    var url = "/visit";
+                    event.preventDefault();
+                    $.get(url, function(response) {
+                        console.log("helloooo", response);
+                        $('#results .content').append(JSON.stringify(response));
+                    }, 'json');
+                    
+                });
+ 
+            });
+        </script>
+    </head>
+    <body>
+        <div id='header'>
+            <a href="/sample" id="fetch-link">Visit Instagram</a>
+        </div>
+ 
+        <div id='results'>
+            <h2></h2>
+            <div class='content' style='whitespace: pre;'>
+            </div>
+        </div>
+ 
+    </body>
+</html>

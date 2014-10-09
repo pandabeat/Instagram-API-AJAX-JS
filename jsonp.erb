@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+    <head>
+        <title>ajax example</title>
+        <script type='text/javascript' src='http://code.jquery.com/jquery-1.11.1.min.js'></script>
+        <script>
+            $(document).ready(function(){
+ 
+              // we use submit instead of click to take advantage of things like
+              // using the enter key to submit
+            $('form').on('submit', function(e){
+              e.preventDefault();
+              var query = $('#query').val();
+              var url = "https://api.instagram.com/v1/tags/"+query+"/media/recent?client_id=07de661150fe49f989d53494e48b156a";
+
+              $.ajax({
+                  url: url,
+                  success: function(response) {
+                  console.log(response);
+                  var photos = [];
+                  for(var i=0; i<response.data.length; i++)
+                    {
+                      $("#gallery").append("<img src="+response.data[i].images.standard_resolution.url + " />");
+                      photos.push("<img src="+response.data[i].images.standard_resolution.url + " />");
+                    }
+                  },
+                  dataType: "jsonp",
+              }); //ajax
+            });
+          });
+
+        </script>
+    </head>
+    <body>
+ 
+        <div id='header'>
+            Search:
+            <form>
+                <input type='text' name='query' id='query' />
+                <input type='submit' name='submit' id='submit' value='Search' />
+            </form>
+        </div>
+ 
+        <div id='gallery'>
+          <!-- search results append here! -->
+        </div>
+ 
+    </body>
+</html>
