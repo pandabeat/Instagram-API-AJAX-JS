@@ -1,0 +1,36 @@
+#search-container {
+	width: 300px;
+	padding: 20px;
+}
+
+
+#photo-row td {
+	display: inline-block;
+	width: 100px;
+	height: 100px;
+}
+
+td img {
+	width: 100%;
+    height: auto;
+}
+
+#slideshow { 
+	max-height:450px; 
+	max-width:450px; 
+}
+
+#slideshow-container {
+	height:300px; 
+	width:300px;
+	position: relative;
+	display: inline-block;
+	padding: 25px;
+	margin-bottom: 100px;
+
+}
+
+#reset-search-button {
+	display: none;
+	margin-bottom: 50px;
+}
